@@ -72,18 +72,19 @@ a {
   color: inherit;
 }
 
-input, button {
+input,
+button {
   border: none;
   background: none;
 }
 
-@media (width >= 33.125rem) {
+@media (width >=33.125rem) {
   body {
     padding: 2.5625rem 5.375rem;
   }
 }
 
-@media (width >= 64rem) {
+@media (width >=64rem) {
   body {
     padding: 4.5625rem 8.375rem;
   }
