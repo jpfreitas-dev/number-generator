@@ -2,7 +2,8 @@ main {
   margin-top: 2.875rem;
   display: grid;
   gap: 3rem;
-  max-width: 68.625rem;
+  justify-content: center;
+  align-items: center;
 
   & .title {
     & span {
@@ -24,7 +25,8 @@ main {
   }
 
   & .generator {
-      max-width: 30.125rem;
+    max-width: 30.125rem;
+    height: fit-content;
 
     & h2 {
       color: var(--content-primary);
@@ -100,7 +102,7 @@ main {
 
           &:has(input:checked) {
             background: var(--gradient-background);
-            
+
             & .slider {
               left: .8125rem;
             }
@@ -180,28 +182,31 @@ main {
   }
 }
 
-
-/* @media (width >=64rem) {
+@media (width >=64rem) {
   main {
     margin-top: 6rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
     grid-template-areas:
       "title generator"
       "questions generator";
     column-gap: 4rem;
     row-gap: 2rem;
-  }
 
-  .title {
-    grid-area: title;
-  }
+    & .title {
+      grid-area: title;
 
-  .generator {
-    grid-area: generator;
-  }
+      & h1 {
+        font: var(--display-large);
+      }
+    }
 
-  .questions {
-    grid-area: questions;
+    & .generator {
+      grid-area: generator;
+    }
+
+    & .questions {
+      grid-area: questions;
+    }
   }
-} */
+}
