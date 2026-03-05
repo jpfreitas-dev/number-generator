@@ -51,8 +51,9 @@
   --paragraph-large: 500 1rem / 150% var(--ff-flex);
   --paragraph-medium: 500 .875rem / 150% var(--ff-flex);
   --paragraph-small: 500 .75rem / 150% var(--ff-flex);
-  --label-medium: 700 1.25rem / 150% var(--ff-flex);
-  --label-small: 700 1rem / 150% var(--ff-flex);
+  --label-large: 700 1.25rem / 150% var(--ff-flex);
+  --label-medium: 700 1rem / 150% var(--ff-flex);
+  --label-small: 700 .75rem / 150% var(--ff-flex);
 }
 
 body {
