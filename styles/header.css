@@ -1,0 +1,40 @@
+header {
+  & a {
+    width: fit-content;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    gap: .6875rem;
+
+    & img {
+      transition: transform 0.7s ease;
+    }
+
+    & span {
+      color: var(--content-primary);
+      font: var(--font-logo);
+      text-transform: uppercase;
+      letter-spacing: -4%;
+      transition: color 0.7s ease;
+    }
+
+
+    &:hover {
+      & img {
+        transform: rotate(-70deg);
+      }
+
+      & span {
+        color: var(--accent-pink);
+      }
+    }
+  }
+}
+
+@media (width >= 64rem) {
+  header {
+    & a {
+      margin-left: 0;
+    }
+  }
+}
