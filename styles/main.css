@@ -28,141 +28,181 @@ main {
     max-width: 30.125rem;
     height: fit-content;
 
-    & h2 {
-      color: var(--content-primary);
-      font: var(--label-large);
-      text-transform: uppercase;
-    }
+    & div.form {
+      & h2 {
+        color: var(--content-primary);
+        font: var(--label-large);
+        text-transform: uppercase;
+      }
 
-    & p {
-      margin-top: .125rem;
-      color: var(--content-tertiary);
-      font: var(--paragraph-medium)
-    }
+      & p {
+        margin-top: .125rem;
+        color: var(--content-tertiary);
+        font: var(--paragraph-medium)
+      }
 
-    & form {
-      margin-top: 2.5rem;
+      & form {
+        margin-top: 2.5rem;
 
-      & .number-inputs {
-        display: flex;
-        gap: .75rem;
-        justify-content: flex-start;
-
-        & .number-input {
+        & .number-inputs {
           display: flex;
-          flex-direction: column;
+          gap: .75rem;
+          justify-content: flex-start;
+
+          & .number-input {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .5rem;
+            width: 5.375rem;
+            height: 5.5rem;
+
+            & label {
+              color: var(--content-secondary);
+              font: var(--label-medium);
+              text-transform: uppercase;
+            }
+
+            & .input-wrapper {
+              position: relative;
+              width: 5.375rem;
+              height: 3.5rem;
+
+              & .input-border {
+                position: absolute;
+                inset: -1px;
+                border-radius: .5rem;
+                background: linear-gradient(135deg, #77C0AF 0%, #D1DC97 14.84%, #E9A9B3 32.15%, #D586E0 65.79%, #91A1FA 84.58%);
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+                z-index: 1;
+                pointer-events: none;
+              }
+
+              & input {
+                background-color: var(--background-secondary);
+                width: 100%;
+                height: 100%;
+                padding: .25rem .5rem;
+                border-radius: .5rem;
+                color: var(--content-primary);
+                font: var(--display-small);
+                text-align: center;
+                position: relative;
+                z-index: 2;
+                outline: none;
+              }
+            }
+          }
+        }
+
+        & .number-repeat {
+          margin-top: 1.25rem;
+          display: flex;
           align-items: center;
           gap: .5rem;
-          width: 5.375rem;
-          height: 5.5rem;
+
+          & .switch {
+            position: relative;
+            width: 1.875rem;
+            height: 1.25rem;
+            border-radius: 16px;
+            background: var(--content-tertiary);
+            transition: background 0.3s ease-in-out;
+            cursor: pointer;
+
+            & input {
+              opacity: 0;
+              inset: 0;
+              position: absolute;
+              cursor: pointer;
+              z-index: 1;
+            }
+
+            &:has(input:checked) {
+              background: var(--gradient-background);
+
+              & .slider {
+                left: .8125rem;
+              }
+            }
+
+            & .slider {
+              position: absolute;
+              width: .875rem;
+              height: .875rem;
+              background-color: var(--content-primary);
+              border-radius: 50%;
+              top: .1875rem;
+              left: .1875rem;
+              transition: left 0.4s cubic-bezier(0.28, 0.79, 0.33, 1.44);
+            }
+          }
 
           & label {
             color: var(--content-secondary);
+            font: var(--label-small);
+            cursor: pointer;
+          }
+        }
+
+        & button {
+          margin-top: 2.5rem;
+          width: 100%;
+          padding: 1rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: .5rem;
+          background-color: var(--background-tertiary);
+          border-radius: .5rem;
+          cursor: pointer;
+
+          & span {
+            color: var(--content-primary);
             font: var(--label-medium);
             text-transform: uppercase;
           }
-
-          & .input-wrapper {
-            position: relative;
-            width: 5.375rem;
-            height: 3.5rem;
-
-            & .input-border {
-              position: absolute;
-              inset: -1px;
-              border-radius: .5rem;
-              background: linear-gradient(135deg, #77C0AF 0%, #D1DC97 14.84%, #E9A9B3 32.15%, #D586E0 65.79%, #91A1FA 84.58%);
-              opacity: 0;
-              transition: opacity 0.3s ease-in-out;
-              z-index: 1;
-              pointer-events: none;
-            }
-
-            & input {
-              background-color: var(--background-secondary);
-              width: 100%;
-              height: 100%;
-              padding: .25rem .5rem;
-              border-radius: .5rem;
-              color: var(--content-primary);
-              font: var(--display-small);
-              text-align: center;
-              position: relative;
-              z-index: 2;
-              outline: none;
-            }
-          }
         }
       }
+    }
 
-      & .number-repeat {
-        margin-top: 1.25rem;
-        display: flex;
-        align-items: center;
-        gap: .5rem;
 
-        & .switch {
-          position: relative;
-          width: 1.875rem;
-          height: 1.25rem;
-          border-radius: 16px;
-          background: var(--content-tertiary);
-          transition: background 0.3s ease-in-out;
-          cursor: pointer;
 
-          & input {
-            opacity: 0;
-            inset: 0;
-            position: absolute;
-            cursor: pointer;
-            z-index: 1;
-          }
+    & div.result {
+      text-align: center;
+      width: 100%;
 
-          &:has(input:checked) {
-            background: var(--gradient-background);
+      & h2 {
+        color: var(--content-primary);
+        font: var(--label-large);
+        text-transform: uppercase;
+      }
 
-            & .slider {
-              left: .8125rem;
-            }
-          }
-
-          & .slider {
-            position: absolute;
-            width: .875rem;
-            height: .875rem;
-            background-color: var(--content-primary);
-            border-radius: 50%;
-            top: .1875rem;
-            left: .1875rem;
-            transition: left 0.4s cubic-bezier(0.28, 0.79, 0.33, 1.44);
-          }
-        }
-
-        & label {
-          color: var(--content-secondary);
-          font: var(--label-small);
-          cursor: pointer;
-        }
+      & p {
+        margin-top: .125rem;
+        color: var(--content-tertiary);
+        font: var(--paragraph-medium)
       }
 
       & button {
-        margin-top: 2.5rem;
-        width: 100%;
-        padding: 1rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: .5rem;
-        background-color: var(--background-tertiary);
-        border-radius: .5rem;
-        cursor: pointer;
+          margin-top: 2.5rem;
+          width: 100%;
+          padding: 1rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: .5rem;
+          background-color: var(--background-tertiary);
+          border-radius: .5rem;
+          cursor: pointer;
 
-        & span {
-          color: var(--content-primary);
-          font: var(--label-medium);
-          text-transform: uppercase;
+          & span {
+            color: var(--content-primary);
+            font: var(--label-medium);
+            text-transform: uppercase;
+          }
         }
-      }
     }
   }
 
@@ -204,7 +244,7 @@ main {
   main {
     margin-top: 6rem;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto 1fr;
     grid-template-areas:
       "title generator"
       "questions generator";
@@ -222,78 +262,109 @@ main {
     & .generator {
       grid-area: generator;
 
-      & form {
-        & .number-inputs .number-input {
+      & div.form {
+        & form {
+          & .number-inputs .number-input {
 
-          & label {
-            transition: all 0.3s ease-in-out;
-          }
-
-          & .input-wrapper {
-            & input {
-              transition: all 0.3s ease-in-out;
-              cursor: pointer;
-            }
-
-            & .input-border {
-              transition: all 100ms ease-in-out;
-            }
-
-            &:has(input:focus) {
-              & input {
-                background-color: var(--background-tertiary);
-              }
-
-              & .input-border {
-                opacity: 1;
-                inset: -2px;
-              }
-            }
-          }
-
-          &:hover {
             & label {
-              color: var(--content-brand);
+              transition: all 0.3s ease-in-out;
             }
 
             & .input-wrapper {
               & input {
-                background-color: var(--background-tertiary);
+                transition: all 0.3s ease-in-out;
+                cursor: pointer;
               }
 
               & .input-border {
+                transition: all 100ms ease-in-out;
+              }
+
+              &:has(input:focus) {
+                & input {
+                  background-color: var(--background-tertiary);
+                }
+
+                & .input-border {
+                  opacity: 1;
+                  inset: -2px;
+                }
+              }
+            }
+
+            &:hover {
+              & label {
+                color: var(--content-brand);
+              }
+
+              & .input-wrapper {
+                & input {
+                  background-color: var(--background-tertiary);
+                }
+
+                & .input-border {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+
+          & button {
+            position: relative;
+
+            &::before {
+              content: "";
+              position: absolute;
+              inset: -2px;
+              border-radius: inherit;
+              --background-deg: 0deg;
+              background: linear-gradient(var(--background-deg), #77C0AF 0%, #D1DC97 14.84%, #E9A9B3 32.15%, #D586E0 65.79%, #91A1FA 84.58%);
+              ;
+              z-index: -1;
+              opacity: 0;
+              animation: rotateBackground 0.8s ease infinite;
+            }
+
+            &:hover {
+              &::before {
                 opacity: 1;
+              }
+
+              & img {
+                animation: bounceRight 1.5s linear infinite;
               }
             }
           }
         }
+      }
 
+      & div.result {
         & button {
-          position: relative;
+            position: relative;
 
-          &::before {
-            content: "";
-            position: absolute;
-            inset: -2px;
-            border-radius: inherit;
-            --background-deg: 0deg;
-            background: linear-gradient(var(--background-deg), #77C0AF 0%, #D1DC97 14.84%, #E9A9B3 32.15%, #D586E0 65.79%, #91A1FA 84.58%);
-            ;
-            z-index: -1;
-            opacity: 0;
-            animation: rotateBackground 0.8s ease infinite;
-          }
-
-          &:hover {
             &::before {
-              opacity: 1;
+              content: "";
+              position: absolute;
+              inset: -2px;
+              border-radius: inherit;
+              --background-deg: 0deg;
+              background: linear-gradient(var(--background-deg), #77C0AF 0%, #D1DC97 14.84%, #E9A9B3 32.15%, #D586E0 65.79%, #91A1FA 84.58%);
+              ;
+              z-index: -1;
+              opacity: 0;
+              animation: rotateBackground 0.8s ease infinite;
             }
 
-            & img {
-              animation: bounceRight  1.5s linear infinite;
+            &:hover {
+              &::before {
+                opacity: 1;
+              }
+
+              & img {
+                animation: bounceRight 1.5s linear infinite;
+              }
             }
           }
-        }
       }
 
     }

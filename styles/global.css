@@ -40,7 +40,7 @@
 
   /* Display (Sora) */
   --font-logo: 700 1.5rem / 130% var(--ff-sora);
-  --display-large: 700 4.5rem / 130% var(--ff-sora);
+  --display-large: 700 3.5rem / 130% var(--ff-sora);
   --display-medium: 700 2.5rem / 130% var(--ff-sora);
   --display-small: 700 2rem / 130% var(--ff-sora);
 
@@ -57,10 +57,11 @@
 }
 
 body {
+  min-height: 100dvh;
   margin-inline: auto;
   overflow-x: hidden;
   background-color: var(--background-primary);
-  background-image: linear-gradient(180deg, rgb(0, 0, 0), rgba(0, 0, 0, 0.3)), url(../assets/shapes-background.png);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 30%, rgba(0, 0, 0, 0.3)), url(../assets/shapes-background.png);
   padding: 2.75rem 1.5625rem;
 }
 

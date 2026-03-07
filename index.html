@@ -30,49 +30,60 @@
       </section>
 
       <section class="generator">
-        <h2>Quero sortear:</h2>
-        <p>Defina o intervalo e a quantidade de números, clique em "Sortear" e veja os resultados na tela. É rápido e
-          fácil!</p>
+        <div class="form">
+          <h2>Quero sortear:</h2>
+          <p>Defina o intervalo e a quantidade de números, clique em "Sortear" e veja os resultados na tela. É rápido e
+            fácil!</p>
 
-        <form>
-          <div class="number-inputs">
-            <div class="number-input">
-              <label for="number-amount">Números</label>
-              <div class="input-wrapper">
-                <div class="input-border"></div>
-                <input type="text" name="number-amount" id="number-amount" value="2">
+          <form>
+            <div class="number-inputs">
+              <div class="number-input">
+                <label for="number-amount">Números</label>
+                <div class="input-wrapper">
+                  <div class="input-border"></div>
+                  <input type="text" name="number-amount" id="number-amount" value="2">
+                </div>
+              </div>
+              <div class="number-input">
+                <label for="number-from">De</label>
+                <div class="input-wrapper">
+                  <div class="input-border"></div>
+                  <input type="text" name="number-from" id="number-from">
+                </div>
+              </div>
+              <div class="number-input">
+                <label for="number-until">Até</label>
+                <div class="input-wrapper">
+                  <div class="input-border"></div>
+                  <input type="text" name="number-until" id="number-until">
+                </div>
               </div>
             </div>
-            <div class="number-input">
-              <label for="number-from">De</label>
-              <div class="input-wrapper">
-                <div class="input-border"></div>
-                <input type="text" name="number-from" id="number-from">
+
+            <div class="number-repeat">
+              <div class="switch">
+                <input type="checkbox" id="number-repeat" name="number-repeat">
+                <span class="slider"></span>
               </div>
-            </div>
-            <div class="number-input">
-              <label for="number-until">Até</label>
-              <div class="input-wrapper">
-                <div class="input-border"></div>
-                <input type="text" name="number-until" id="number-until">
-              </div>
-            </div>
-          </div>
+              <label for="number-repeat">Não repetir número</label>
 
-          <div class="number-repeat">
-            <div class="switch">
-              <input type="checkbox" id="number-repeat" name="number-repeat">
-              <span class="slider"></span>
             </div>
-            <label for="number-repeat">Não repetir número</label>
 
-          </div>
+            <button type="submit">
+              <span>Sortear</span>
+              <img src="./assets/arrow.svg" alt="Ícone de seta para direita">
+            </button>
+          </form>
+        </div>
+        <!-- <div class="result">
+          <h2>Resultado do sorteio</h2>
+          <p>1º resultado</p>
 
-          <button type="submit">
-            <span>Sortear</span>
-            <img src="./assets/arrow.svg" alt="Ícone de seta para direita">
+          <button type="button">
+              <span>Sortear</span>
+              <img src="./assets/arrow.svg" alt="Ícone de seta para direita">
           </button>
-        </form>
+        </div> -->
       </section>
 
       <section class="questions">
