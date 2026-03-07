@@ -46,6 +46,7 @@
 
   /* Typography - Monospace (Roboto Mono) */
   --text-overline: 700 1rem / 160% var(--ff-mono);
+  --text-result: 500 3rem / 150% var(--ff-mono);
 
   /* Typography - Flex (Roboto Flex) */
   --paragraph-large: 500 1rem / 150% var(--ff-flex);

@@ -1,0 +1,38 @@
+.questions {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+
+  & .question {
+    display: flex;
+    align-items: start;
+    gap: .5rem;
+    max-width: 24.125rem;
+
+    & img {
+      cursor: pointer;
+
+      &:hover {
+        content: url(../assets/user-hover.svg);
+      }
+    }
+
+    & div {
+      & h3 {
+        color: var(--content-brand);
+        font: var(--paragraph-medium);
+      }
+
+      & p {
+        color: var(--content-secondary);
+        font: var(--paragraph-small);
+      }
+    }
+  }
+}
+
+@media (width >=64rem) {
+  .questions {
+    grid-area: questions;
+  }
+}
