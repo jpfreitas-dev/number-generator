@@ -1,6 +1,6 @@
 const MAX_AMOUNT = 10;
-const CENTER_ANIMATION_MS = 2000;
-const CENTER_SETTLE_MS = 220;
+const CENTER_ANIMATION_MS = 2500;
+const FADE_ANIMATION_MS = 200;
 const MOVE_ANIMATION_MS = 520;
 const STAGGER_MS = 150;
 
@@ -25,7 +25,7 @@ function randomBetween(min, max) {
 // Lê os valores do formulário, converte para números inteiros na base decimal e retorna um objeto com as configurações para a geração dos números
 function parseFormValues() {
   const values = {
-    amount: Number.parseInt(amountInput.value, 10), 
+    amount: Number.parseInt(amountInput.value, 10),
     min: Number.parseInt(fromInput.value, 10),
     max: Number.parseInt(untilInput.value, 10),
     allowRepeat: !repeatInput.checked,
@@ -67,6 +67,10 @@ function validateValues(values) {
 
   if (min > max) {
     return "O valor inicial não pode ser maior que o valor final.";
+  }
+
+  if (max > 999 ) {
+    return "O valor máximo permitido é 999.";
   }
 
   if (!allowRepeat) {
@@ -148,8 +152,8 @@ function renderStaticCards(numbers) {
 // Calcula as posições finais de cada card de número sorteado, para que a animação possa mover os cards para essas posições
 function getFinalCardPositions(cards) {
   const positions = [];
-  const containerRect  = resultNumbers.getBoundingClientRect(); // Pega as coordenadas do container para calcular as posições relativas dos cards dentro dele
-  
+  const containerRect = resultNumbers.getBoundingClientRect(); // Pega as coordenadas do container para calcular as posições relativas dos cards dentro dele
+
   let i = 0;
 
   while (i < cards.length) {
@@ -157,7 +161,7 @@ function getFinalCardPositions(cards) {
 
     positions.push({
       // Subtrai para que a posição seja relativa ao container, e não à janela inteira
-      left: rect.left - containerRect.left, 
+      left: rect.left - containerRect.left,
       top: rect.top - containerRect.top,
       width: rect.width,
       height: rect.height,
@@ -210,11 +214,19 @@ function animateCard(card, done) {
   card.classList.add("is-center");
 
   setTimeout(() => {
-    card.classList.remove("is-center"); setTimeout(() => {
-      card.classList.add("is-moving"); setTimeout(() => {
+    card.classList.remove("is-center");
+    card.classList.add("is-centered-idle");
+    card.classList.add("is-fading");
+
+    setTimeout(() => {
+      card.classList.remove("is-centered-idle");
+      card.classList.remove("is-fading");
+      card.classList.add("is-moving");
+
+      setTimeout(() => {
         done();
       }, MOVE_ANIMATION_MS);
-    }, CENTER_SETTLE_MS);
+    }, FADE_ANIMATION_MS);
   }, CENTER_ANIMATION_MS);
 }
 
