@@ -30,32 +30,32 @@
       </section>
 
       <section class="generator">
-        <!-- <div class="form">
+        <div class="form" id="generator-form-wrap">
           <h2>Quero sortear:</h2>
           <p>Defina o intervalo e a quantidade de números, clique em "Sortear" e veja os resultados na tela. É rápido e
             fácil!</p>
 
-          <form>
+          <form id="generator-form" novalidate>
             <div class="number-inputs">
               <div class="number-input">
                 <label for="number-amount">Números</label>
                 <div class="input-wrapper">
                   <div class="input-border"></div>
-                  <input type="text" name="number-amount" id="number-amount" value="2">
+                  <input type="number" name="number-amount" id="number-amount" value="2" min="1" max="10" inputmode="numeric" required>
                 </div>
               </div>
               <div class="number-input">
                 <label for="number-from">De</label>
                 <div class="input-wrapper">
                   <div class="input-border"></div>
-                  <input type="text" name="number-from" id="number-from">
+                  <input type="number" name="number-from" id="number-from" value="1" inputmode="numeric" required>
                 </div>
               </div>
               <div class="number-input">
                 <label for="number-until">Até</label>
                 <div class="input-wrapper">
                   <div class="input-border"></div>
-                  <input type="text" name="number-until" id="number-until">
+                  <input type="number" name="number-until" id="number-until" value="100" inputmode="numeric" required>
                 </div>
               </div>
             </div>
@@ -69,24 +69,21 @@
 
             </div>
 
+            <p class="form-error" id="form-error" role="alert" aria-live="polite"></p>
+
             <button type="submit">
               <span>Sortear</span>
               <img src="./assets/arrow.svg" alt="Ícone de seta para direita">
             </button>
           </form>
-        </div> -->
-        <div class="result">
+        </div>
+        <div class="result-wraper is-hidden" id="result-wraper">
           <h2>Resultado do sorteio</h2>
-          <p>1º resultado</p>
+          <p><span class="result-amount">1</span>º resultado</p>
 
-          <div class="result-numbers">
-            <div class="number">
-              <div class="number-background"></div>
-              <p>22</p>
-            </div>
-          </div>
+          <div class="result-numbers" aria-live="polite"></div>
 
-          <button type="button">
+          <button type="button" id="retry-button">
               <span>Sortear novamente</span>
               <div>
                 <img src="./assets/replay.svg" alt="Ícone de replay">
@@ -115,6 +112,8 @@
       </section>
     </main>
   </div>
+
+  <script src="./script.js"></script>
 </body>
 
 </html>
