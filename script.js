@@ -73,6 +73,10 @@ function validateValues(values) {
     return "O valor máximo permitido é 999.";
   }
 
+  if (min < 0) {
+    return "O valor mínimo permitido é 0.";
+  }
+
   if (!allowRepeat) {
     const rangeSize = max - min + 1;
 
@@ -230,12 +234,14 @@ function animateCard(card, done) {
   }, CENTER_ANIMATION_MS);
 }
 
+// Finaliza a animação
 function finishAnimation(numbers) {
   renderStaticCards(numbers);
   resultNumbers.classList.remove("is-animating");
   resultNumbers.style.height = "";
 }
 
+// Controla o fluxo da animação para os números sorteados, renderizando os cards, calculando as posições, preparando os cards para a animação e animando cada card em sequência com um atraso entre eles
 function animateResults(numbers) {
   renderStaticCards(numbers);
 
