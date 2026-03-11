@@ -3,6 +3,9 @@ const CENTER_ANIMATION_MS = 1500;
 const FADE_ANIMATION_MS = 120;
 const MOVE_ANIMATION_MS = 312;
 const STAGGER_MS = 90;
+let numberOfResults = 0;
+let showingResults = false;
+let usedNumbers = new Set();
 
 const form = document.getElementById("generator-form");
 const formWrap = document.getElementById("generator-form-wrap");
@@ -11,18 +14,17 @@ const errorElement = document.getElementById("form-error");
 const resultAmount = document.querySelector(".result-amount");
 const resultNumbers = document.querySelector(".result-numbers");
 const retryButton = document.getElementById("retry-button");
+const backButton = document.getElementById("back-button");
 
 const amountInput = document.getElementById("number-amount");
 const fromInput = document.getElementById("number-from");
 const untilInput = document.getElementById("number-until");
 const repeatInput = document.getElementById("number-repeat");
 
-// Multiplica o "Math.random()" pelo intervalo, arredonda para um número inteiro e depois soma o "min" para ajustar o resultado para o intervalo desejado
 function randomBetween(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Lê os valores do formulário, converte para números inteiros na base decimal e retorna um objeto com as configurações para a geração dos números
 function parseFormValues() {
   const values = {
     amount: Number.parseInt(amountInput.value, 10),
@@ -34,19 +36,16 @@ function parseFormValues() {
   return values;
 }
 
-// Dispara o erro com a mensagem recebida
 function showError(message) {
   errorElement.textContent = message;
   errorElement.classList.add("is-visible");
 }
 
-// Limpa o erro, removendo a mensagem
 function clearError() {
   errorElement.textContent = "";
   errorElement.classList.remove("is-visible");
 }
 
-// Analisa os dados inseridos pelo usuário e decide se o sorteio pode prosseguir ou se há algum erro lógico que impeça a execução
 function validateValues(values) {
   const amount = values.amount;
   const min = values.min;
@@ -69,7 +68,7 @@ function validateValues(values) {
     return "O valor inicial não pode ser maior que o valor final.";
   }
 
-  if (max > 999 ) {
+  if (max > 999) {
     return "O valor máximo permitido é 999.";
   }
 
@@ -77,18 +76,9 @@ function validateValues(values) {
     return "O valor mínimo permitido é 0.";
   }
 
-  if (!allowRepeat) {
-    const rangeSize = max - min + 1;
-
-    if (amount > rangeSize) {
-      return "A quantidade não pode ser maior que o tamanho do intervalo.";
-    }
-  }
-
   return null;
 }
 
-// Decide qual algoritmo usar para criar a lista de números sorteados, baseando-se na escolha do usuário sobre permitir ou não repetições
 function generateNumbers(values) {
   const numbers = [];
   const amount = values.amount;
@@ -96,7 +86,6 @@ function generateNumbers(values) {
   const max = values.max;
   const allowRepeat = values.allowRepeat;
 
-  // Se repetições são permitidas
   if (allowRepeat) {
     let i = 0;
 
@@ -108,21 +97,29 @@ function generateNumbers(values) {
     return numbers;
   }
 
-  // Se repetições não são permitidas
-  const selected = new Set();
+  // Mantém a regra de não repetição entre rodadas, não apenas dentro do resultado atual.
+  const available = [];
+  let n = min;
 
-  while (selected.size < amount) {
-    selected.add(randomBetween(min, max));
+  while (n <= max) {
+    if (!usedNumbers.has(n)) available.push(n);
+    n += 1;
   }
 
-  selected.forEach(function (value) {
-    numbers.push(value);
-  });
+  const drawCount = Math.min(amount, available.length);
+  let i = 0;
+
+  while (i < drawCount) {
+    const idx = Math.floor(Math.random() * available.length);
+    numbers.push(available[idx]);
+    usedNumbers.add(available[idx]);
+    available.splice(idx, 1);
+    i += 1;
+  }
 
   return numbers;
 }
 
-// Cria a estrutura HTML para exibir um número sorteado
 function createNumberCard(number) {
   const card = document.createElement("div");
   card.className = "result-number";
@@ -138,7 +135,6 @@ function createNumberCard(number) {
   return card;
 }
 
-// Renderiza os números sorteados na tela, criando um card para cada número e adicionando-os ao container de resultados
 function renderStaticCards(numbers) {
   resultNumbers.innerHTML = "";
 
@@ -153,18 +149,17 @@ function renderStaticCards(numbers) {
   resultNumbers.append(fragment);
 }
 
-// Calcula as posições finais de cada card de número sorteado, para que a animação possa mover os cards para essas posições
 function getFinalCardPositions(cards) {
   const positions = [];
-  const containerRect = resultNumbers.getBoundingClientRect(); // Pega as coordenadas do container para calcular as posições relativas dos cards dentro dele
+  const containerRect = resultNumbers.getBoundingClientRect();
 
   let i = 0;
 
   while (i < cards.length) {
-    const rect = cards[i].getBoundingClientRect(); // Pega as coordenadas do card para calcular sua posição relativa ao container
+    const rect = cards[i].getBoundingClientRect();
 
     positions.push({
-      // Subtrai para que a posição seja relativa ao container, e não à janela inteira
+      // A animação usa coordenadas relativas ao container, não à viewport.
       left: rect.left - containerRect.left,
       top: rect.top - containerRect.top,
       width: rect.width,
@@ -177,7 +172,6 @@ function getFinalCardPositions(cards) {
   return positions;
 }
 
-// Define a altura do container de resultados para o valor máximo necessário para acomodar os cards, evitando que o layout mude durante a animação
 function lockContainerHeight(positions) {
   let maxBottom = 0;
   let i = 0;
@@ -195,7 +189,6 @@ function lockContainerHeight(positions) {
   resultNumbers.style.height = Math.ceil(maxBottom) + "px";
 }
 
-// Prepara os cards para a animação, definindo suas posições iniciais e as variáveis CSS necessárias para a animação de movimento
 function prepareCardsForAnimation(cards, positions) {
   let i = 0;
 
@@ -213,7 +206,6 @@ function prepareCardsForAnimation(cards, positions) {
   }
 }
 
-// Anima um card específico, movendo-o para o centro da tela e depois para sua posição final, usando as classes CSS para controlar a animação e chamando a função de callback quando a animação estiver completa
 function animateCard(card, done) {
   card.classList.add("is-center");
 
@@ -234,15 +226,16 @@ function animateCard(card, done) {
   }, CENTER_ANIMATION_MS);
 }
 
-// Finaliza a animação
 function finishAnimation(numbers) {
   renderStaticCards(numbers);
   resultNumbers.classList.remove("is-animating");
   resultNumbers.style.height = "";
+  showingResults = false;
+  console.log("showingResults", showingResults);
 }
 
-// Controla o fluxo da animação para os números sorteados, renderizando os cards, calculando as posições, preparando os cards para a animação e animando cada card em sequência com um atraso entre eles
 function animateResults(numbers) {
+  showingResults = true;
   renderStaticCards(numbers);
 
   const nodeList = resultNumbers.querySelectorAll(".result-number");
@@ -263,6 +256,7 @@ function animateResults(numbers) {
 
   let index = 0;
 
+  // Executa os cards em sequência para preservar o efeito de cascata.
   function animateNextCard() {
     if (index >= cards.length) {
       finishAnimation(numbers);
@@ -291,11 +285,13 @@ function showForm() {
   resultWrap.classList.add("is-hidden");
   formWrap.classList.remove("is-hidden");
   clearError();
+  usedNumbers = new Set();
+  retryButton.disabled = false;
   amountInput.focus();
 }
 
 function handleSubmit(event) {
-  event.preventDefault();
+  if (event) event.preventDefault();
 
   const values = parseFormValues();
   const validationError = validateValues(values);
@@ -306,17 +302,33 @@ function handleSubmit(event) {
   }
 
   clearError();
+  numberOfResults += 1;
 
   const numbers = generateNumbers(values);
-  resultAmount.textContent = String(numbers.length);
+  resultAmount.textContent = String(numberOfResults);
+
+  if (!values.allowRepeat) {
+    const rangeSize = values.max - values.min + 1;
+    if (usedNumbers.size >= rangeSize) {
+      retryButton.disabled = true;
+    }
+  }
 
   showResults();
   animateResults(numbers);
 }
 
-function handleRetry() {
+function formReturn() {
   showForm();
+  numberOfResults = 0;
 }
 
 form.addEventListener("submit", handleSubmit);
-retryButton.addEventListener("click", handleRetry);
+retryButton.addEventListener("click", function () {
+  if (showingResults) {
+    return;
+  }
+  handleSubmit();
+});
+
+backButton.addEventListener("click", formReturn);
