@@ -1,8 +1,8 @@
 const MAX_AMOUNT = 10;
-const CENTER_ANIMATION_MS = 2500;
-const FADE_ANIMATION_MS = 200;
-const MOVE_ANIMATION_MS = 520;
-const STAGGER_MS = 150;
+const CENTER_ANIMATION_MS = 1500;
+const FADE_ANIMATION_MS = 120;
+const MOVE_ANIMATION_MS = 312;
+const STAGGER_MS = 90;
 
 const form = document.getElementById("generator-form");
 const formWrap = document.getElementById("generator-form-wrap");

@@ -52,7 +52,7 @@
               border-radius: .5rem;
               background: linear-gradient(135deg, #77C0AF 0%, #D1DC97 14.84%, #E9A9B3 32.15%, #D586E0 65.79%, #91A1FA 84.58%);
               opacity: 0;
-              transition: opacity 0.3s ease-in-out;
+              transition: opacity 0.18s ease-in-out;
               z-index: 1;
               pointer-events: none;
             }
@@ -93,7 +93,7 @@
           height: 1.25rem;
           border-radius: 16px;
           background: var(--content-tertiary);
-          transition: background 0.3s ease-in-out;
+          transition: background 0.18s ease-in-out;
           cursor: pointer;
 
           & input {
@@ -120,7 +120,7 @@
             border-radius: 50%;
             top: .1875rem;
             left: .1875rem;
-            transition: left 0.4s cubic-bezier(0.28, 0.79, 0.33, 1.44);
+            transition: left 0.24s cubic-bezier(0.28, 0.79, 0.33, 1.44);
           }
         }
 
@@ -137,7 +137,7 @@
         color: var(--accent-red);
         font: var(--paragraph-small);
         opacity: 0;
-        transition: opacity 180ms ease;
+        transition: opacity 108ms ease;
       }
 
       & .form-error.is-visible {
@@ -208,7 +208,7 @@
         border: 2px solid transparent;
         background-color: transparent;
         opacity: 0;
-        transition: opacity 320ms ease, background-color 320ms ease, border-color 320ms ease;
+        transition: opacity 300ms ease, background-color 300ms ease, border-color 300ms ease;
         z-index: 1;
         pointer-events: none;
       }
@@ -221,7 +221,7 @@
         z-index: 2;
         font: var(--text-result);
         color: var(--content-brand);
-        transition: color 320ms ease;
+        transition: color 192ms ease;
       }
     }
 
@@ -234,13 +234,13 @@
     }
 
     & .result-number.is-center {
-      animation: numberCenterIn 1000ms cubic-bezier(0.34, 1.30, 0.64, 1) forwards;
+      animation: numberCenterIn 600ms cubic-bezier(0.34, 1.30, 0.64, 1) forwards;
 
       & .number-background {
         opacity: 1;
         background-color: var(--accent-pink);
         border-color: var(--accent-pink);
-        animation: numberBackgroundSpin 1000ms linear 1s forwards;
+        animation: numberBackgroundSpin 700ms linear 0.6s forwards;
       }
 
       & span {
@@ -268,7 +268,7 @@
       left: var(--target-left);
       top: var(--target-top);
       transform: translate(0, 0) scale(1);
-      transition: left 800ms ease, top 800ms ease, transform 800ms ease;
+      transition: left 480ms ease, top 480ms ease, transform 480ms ease;
     }
 
     & button {
@@ -318,17 +318,17 @@
       & form {
         & .number-inputs .number-input {
           & label {
-            transition: all 0.3s ease-in-out;
+            transition: all 0.18s ease-in-out;
           }
 
           & .input-wrapper {
             & input {
-              transition: all 0.3s ease-in-out;
+              transition: all 0.18s ease-in-out;
               cursor: pointer;
             }
 
             & .input-border {
-              transition: all 100ms ease-in-out;
+              transition: all 60ms ease-in-out;
             }
 
             &:has(input:focus) {
