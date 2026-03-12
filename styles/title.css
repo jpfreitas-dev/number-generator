@@ -19,10 +19,10 @@
 
 @media (width >= 72rem) {
   .title {
-      grid-area: title;
+    grid-area: title;
 
-      & h1 {
-        font: var(--display-large);
-      }
+    & h1 {
+      font: var(--display-large);
     }
+  }
 }

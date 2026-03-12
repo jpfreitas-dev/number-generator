@@ -1,10 +1,10 @@
 header {
   & a {
-    width: fit-content;
-    margin-inline: auto;
     display: flex;
     align-items: center;
     gap: .6875rem;
+    margin-inline: auto;
+    width: fit-content;
 
     & img {
       transition: transform 0.7s ease;
@@ -13,11 +13,10 @@ header {
     & span {
       color: var(--content-primary);
       font: var(--font-logo);
-      text-transform: uppercase;
       letter-spacing: -4%;
+      text-transform: uppercase;
       transition: color 0.7s ease;
     }
-
 
     &:hover {
       & img {

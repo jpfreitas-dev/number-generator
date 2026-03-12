@@ -3,6 +3,7 @@ const CENTER_ANIMATION_MS = 1500;
 const FADE_ANIMATION_MS = 120;
 const MOVE_ANIMATION_MS = 312;
 const STAGGER_MS = 90;
+
 let numberOfResults = 0;
 let showingResults = false;
 let usedNumbers = new Set();

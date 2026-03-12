@@ -17,16 +17,14 @@
       }
     }
 
-    & div {
-      & h3 {
-        color: var(--content-brand);
-        font: var(--paragraph-medium);
-      }
+    & h3 {
+      color: var(--content-brand);
+      font: var(--paragraph-medium);
+    }
 
-      & p {
-        color: var(--content-secondary);
-        font: var(--paragraph-small);
-      }
+    & p {
+      color: var(--content-secondary);
+      font: var(--paragraph-small);
     }
   }
 }
