@@ -6,11 +6,11 @@ main {
   align-items: center;
 }
 
-@media (width >=64rem) {
+@media (width >= 72rem) {
   main {
     margin-top: 6rem;
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "title generator"
       "questions generator";

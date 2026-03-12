@@ -31,7 +31,7 @@
   }
 }
 
-@media (width >=64rem) {
+@media (width >= 72rem) {
   .questions {
     grid-area: questions;
   }

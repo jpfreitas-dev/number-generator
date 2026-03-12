@@ -329,7 +329,7 @@
   }
 }
 
-@media (width >=64rem) {
+@media (width >= 72rem) {
   .generator {
     grid-area: generator;
 

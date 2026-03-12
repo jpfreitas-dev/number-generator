@@ -231,7 +231,6 @@ function finishAnimation(numbers) {
   resultNumbers.classList.remove("is-animating");
   resultNumbers.style.height = "";
   showingResults = false;
-  console.log("showingResults", showingResults);
 }
 
 function animateResults(numbers) {
@@ -281,12 +280,13 @@ function showResults() {
   resultWrap.classList.remove("is-hidden");
 }
 
-function showForm() {
+function formBack() {
   resultWrap.classList.add("is-hidden");
   formWrap.classList.remove("is-hidden");
   clearError();
   usedNumbers = new Set();
   retryButton.disabled = false;
+  numberOfResults = 0;
   amountInput.focus();
 }
 
@@ -318,17 +318,14 @@ function handleSubmit(event) {
   animateResults(numbers);
 }
 
-function formReturn() {
-  showForm();
-  numberOfResults = 0;
-}
-
 form.addEventListener("submit", handleSubmit);
-retryButton.addEventListener("click", function () {
-  if (showingResults) {
-    return;
-  }
+
+retryButton.addEventListener("click", () => {
+  if (showingResults) return;
   handleSubmit();
 });
 
-backButton.addEventListener("click", formReturn);
+backButton.addEventListener("click", () => {
+  if (showingResults) return;
+  formBack();
+});
