@@ -1,10 +1,16 @@
-# Sorteador de Números 🎲
+# Sorteadores de Números 🎲
 
-Projeto front-end de sorteio de números com interface moderna, validações de formulário e animação em cascata dos resultados.
+Projeto front-end com dois sorteadores:
+- Sorteador de números (site principal)
+- Sorteador de nomes (site secundário)
 
-## Sobre o projeto 
+Ambos compartilham a mesma identidade visual, estilos reutilizáveis e validações orientadas a formulário.
 
-O aplicativo permite definir:
+## Sobre o projeto
+
+### 1) Site principal: Sorteador de números
+
+O site principal permite definir:
 - Quantidade de números a sortear
 - Valor inicial do intervalo
 - Valor final do intervalo
@@ -12,7 +18,25 @@ O aplicativo permite definir:
 
 Depois do envio, os resultados aparecem em uma tela dedicada com animação sequencial dos cards.
 
+### 2) Site secundário: Sorteador de nomes
+
+O site secundário pode ser acessado pelo link "Clique aqui para sortear nomes" na página principal.
+
+Nele, é possível:
+- Informar nomes separados por vírgula
+- Sortear 1 nome por vez
+- Escolher entre repetir ou não repetir nomes
+- Reiniciar automaticamente o ciclo quando a opção "não repetir" está ativa e todos os nomes já foram sorteados
+
 ## Funcionalidades implementadas ✅
+
+### Gerais
+
+- Estrutura modular de CSS por camadas (base, layout, components e pages)
+- Scripts separados por página
+- Layout responsivo
+
+### Sorteador de números
 
 - Sorteio de números dentro de intervalo customizado
 - Controle de repetição por meio de switch (não repetir / permitir repetir)
@@ -24,6 +48,14 @@ Depois do envio, os resultados aparecem em uma tela dedicada com animação sequ
 - Botão de novo sorteio
 - Botão de voltar para o formulário
 - Reset de estado ao voltar para o formulário
+
+### Sorteador de nomes
+
+- Entrada de nomes por textarea (separados por vírgula)
+- Sorteio aleatório de nomes
+- Switch para modo com repetição ou sem repetição
+- Reinício automático do conjunto de nomes quando o modo sem repetição esgota a lista
+- Transição visual simples entre o resultado atual e o próximo
 
 ## Regras de validação 
 
@@ -95,6 +127,7 @@ number-generator/
 
 1. Abra a pasta do projeto no VS Code
 2. Abra o arquivo index.html no navegador
+3. Para acessar o sorteador de nomes, clique no link da página principal ou abra diretamente o arquivo names.html
 
 Opcional:
 - Use a extensão Live Server para recarregamento automático durante o desenvolvimento
