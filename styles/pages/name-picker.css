@@ -1,0 +1,50 @@
+@import url(../base/theme.css);
+@import url(../layout/page-grid.css);
+@import url(../components/page-title.css);
+@import url(../components/generator-panel.css);
+
+main {
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "title"
+    "generator";
+}
+
+.title {
+  text-align: center;
+}
+
+.title h1 {
+  margin-top: 0;
+}
+
+.generator {
+  margin-inline: auto;
+}
+
+.generator .result-wraper .result-numbers.name-result {
+  margin-block: 2rem 0;
+  min-height: 5.5rem;
+}
+
+.generator .result-wraper .result-numbers.name-result .result-number {
+  width: min(100%, 30.125rem);
+}
+
+.generator .result-wraper .result-numbers.name-result .result-number span {
+  font: var(--label-large);
+  max-width: calc(100% - 1.5rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (width >= 72rem) {
+  main {
+    margin-top: 6rem;
+  }
+
+  .title {
+    text-align: left;
+  }
+}

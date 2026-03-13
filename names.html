@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorteador de Nomes</title>
+
+  <link rel="stylesheet" href="styles/names.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,100..1000,96,468,79,-203,738,514,712&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Sora:wght@100..800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <main>
+      <section class="title">
+        <h1>Sorteador de Nomes</h1>
+      </section>
+
+      <section class="generator">
+        <div class="form" id="generator-form-wrap">
+          <form id="name-generator-form" novalidate>
+            <div class="text-input">
+              <label for="name-list">Escreva os nomes separados por vírgulas</label>
+              <div class="input-wrapper">
+                <div class="input-border"></div>
+                <textarea id="name-list" name="name-list" required></textarea>
+              </div>
+            </div>
+
+            <p class="form-error" id="form-error" role="alert" aria-live="polite"></p>
+
+            <button type="submit">
+              <span>Sortear</span>
+              <img src="./assets/arrow.svg" alt="Ícone de seta para direita">
+            </button>
+          </form>
+        </div>
+
+        <div class="result-wraper is-hidden" id="result-wraper">
+          <div class="result-numbers name-result" id="result-names" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./names.js"></script>
+</body>
+
+</html>

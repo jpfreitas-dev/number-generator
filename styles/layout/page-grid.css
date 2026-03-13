@@ -1,0 +1,19 @@
+main {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2.875rem;
+}
+
+@media (width >= 72rem) {
+  main {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "title generator"
+      "questions generator";
+    column-gap: 4rem;
+    row-gap: 2rem;
+    margin-top: 6rem;
+  }
+}
