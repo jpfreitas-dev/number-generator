@@ -98,7 +98,7 @@ function generateNumbers(values) {
     return numbers;
   }
 
-  // Mantém a regra de não repetição entre rodadas, não apenas dentro do resultado atual.
+  // Mantem a regra de nao repeticao entre rodadas, nao apenas dentro do resultado atual.
   const available = [];
   let n = min;
 
@@ -160,7 +160,7 @@ function getFinalCardPositions(cards) {
     const rect = cards[i].getBoundingClientRect();
 
     positions.push({
-      // A animação usa coordenadas relativas ao container, não à viewport.
+      // A animacao usa coordenadas relativas ao container, nao a viewport.
       left: rect.left - containerRect.left,
       top: rect.top - containerRect.top,
       width: rect.width,
@@ -256,7 +256,7 @@ function animateResults(numbers) {
 
   let index = 0;
 
-  // Executa os cards em sequência para preservar o efeito de cascata.
+  // Executa os cards em sequencia para preservar o efeito de cascata.
   function animateNextCard() {
     if (index >= cards.length) {
       finishAnimation(numbers);

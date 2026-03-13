@@ -10,16 +10,45 @@ main {
     "generator";
 }
 
-.title {
+.title h1 {
+  margin-top: 0;
   text-align: center;
 }
 
-.title h1 {
+.generator {
+  width: 100%;
+  max-width: 56rem;
+  margin-inline: auto;
+}
+
+#name-generator-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+  gap: 1rem 1.5rem;
+  align-items: end;
+}
+
+#name-generator-form .text-input {
   margin-top: 0;
 }
 
-.generator {
-  margin-inline: auto;
+#name-generator-form .name-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#name-generator-form .name-controls .number-repeat {
+  margin-top: 0;
+}
+
+#name-generator-form .name-controls button {
+  margin-top: 0;
+}
+
+#name-generator-form .form-error {
+  grid-column: 1 / -1;
+  margin-top: 0;
 }
 
 .generator .result-wraper .result-numbers.name-result {
@@ -29,14 +58,48 @@ main {
 
 .generator .result-wraper .result-numbers.name-result .result-number {
   width: min(100%, 30.125rem);
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+
+.generator .result-wraper .result-numbers.name-result .result-number .number-background {
+  opacity: 1;
+  background-color: var(--accent-pink);
+  border-color: var(--accent-pink);
+  animation: none;
 }
 
 .generator .result-wraper .result-numbers.name-result .result-number span {
   font: var(--label-large);
+  color: var(--color-inverse);
   max-width: calc(100% - 1.5rem);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.generator .result-wraper .result-numbers.name-result .result-number.is-name-entering {
+  opacity: 0;
+  transform: translateY(.75rem) scale(0.95);
+}
+
+.generator .result-wraper .result-numbers.name-result .result-number.is-name-entering.is-name-entering-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.generator .result-wraper .result-numbers.name-result .result-number.is-name-leaving {
+  opacity: 0;
+  transform: translateY(-.5rem) scale(0.98);
+}
+
+@media (width < 48rem) {
+  #name-generator-form {
+    grid-template-columns: 1fr;
+  }
+
+  #name-generator-form .name-controls {
+    gap: .875rem;
+  }
 }
 
 @media (width >= 72rem) {

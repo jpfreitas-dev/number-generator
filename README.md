@@ -59,22 +59,31 @@ Fluxo da animação:
 ```text
 number-generator/
 ├── index.html
-├── script.js
+├── names.html
+├── scripts/
+│   └── pages/
+│       ├── name-picker.js
+│       └── number-generator.js
 ├── assets/
 └── styles/
-	├── generator.css
-	├── global.css
-	├── header.css
-	├── index.css
-	├── main.css
-	├── questions.css
-	└── title.css
+	├── base/
+	│   └── theme.css
+	├── components/
+	│   ├── faq-list.css
+	│   ├── generator-panel.css
+	│   └── page-title.css
+	├── layout/
+	│   ├── page-grid.css
+	│   └── site-header.css
+	└── pages/
+		├── name-picker.css
+		└── number-generator.css
 ```
 
-- index.html: marcação da interface
-- script.js: lógica de sorteio, validação, estado e animações
+- index.html e names.html: páginas da aplicação
+- scripts/pages/: lógica separada por página
 - assets/: imagens, ícones e recursos visuais
-- styles/: estilos da aplicação organizados por seção/componente
+- styles/: estilos da aplicação organizados por camada e por página
 
 ## Tecnologias utilizadas 
 
