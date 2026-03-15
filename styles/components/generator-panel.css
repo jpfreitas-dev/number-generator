@@ -208,10 +208,10 @@
 
       & .names-link {
         display: inline-block;
-        margin-top: 1rem;
+        margin-top: 0.5rem;
         color: var(--content-brand);
-        font: var(--label-small);
-        transition: color 0.18s ease-in-out;
+        font: var(--label-medium);
+        transition: color 0.1s ease-in-out;
 
         &:hover {
           color: var(--accent-pink);
