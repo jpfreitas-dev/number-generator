@@ -22,6 +22,28 @@ const fromInput = document.getElementById("number-from");
 const untilInput = document.getElementById("number-until");
 const repeatInput = document.getElementById("number-repeat");
 
+function enforceInputLimit(input, maxDigits, maxValue) {
+  input.addEventListener("input", () => {
+    let digits = input.value.replace(/\D/g, "");
+
+    if (digits.length > maxDigits) {
+      digits = digits.slice(0, maxDigits);
+    }
+
+    if (digits === "") {
+      input.value = "";
+      return;
+    }
+
+    const parsed = Number.parseInt(digits, 10);
+    input.value = String(Math.min(parsed, maxValue));
+  });
+}
+
+enforceInputLimit(amountInput, 2, MAX_AMOUNT);
+enforceInputLimit(fromInput, 3, 999);
+enforceInputLimit(untilInput, 3, 999);
+
 function randomBetween(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }

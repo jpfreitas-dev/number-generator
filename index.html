@@ -41,21 +41,21 @@
                 <label for="number-amount">Números</label>
                 <div class="input-wrapper">
                   <div class="input-border"></div>
-                  <input type="number" name="number-amount" id="number-amount" value="2" min="1" max="10" inputmode="numeric" required>
+                  <input type="number" name="number-amount" id="number-amount" value="2" min="1" max="10" maxlength="2" inputmode="numeric" required>
                 </div>
               </div>
               <div class="number-input">
                 <label for="number-from">De</label>
                 <div class="input-wrapper">
                   <div class="input-border"></div>
-                  <input type="number" name="number-from" id="number-from" value="1" inputmode="numeric" required>
+                  <input type="number" name="number-from" id="number-from" value="1" min="0" max="999" maxlength="3" inputmode="numeric" required>
                 </div>
               </div>
               <div class="number-input">
                 <label for="number-until">Até</label>
                 <div class="input-wrapper">
                   <div class="input-border"></div>
-                  <input type="number" name="number-until" id="number-until" value="100" inputmode="numeric" required>
+                  <input type="number" name="number-until" id="number-until" value="100" min="0" max="999" maxlength="3" inputmode="numeric" required>
                 </div>
               </div>
             </div>
